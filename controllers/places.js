@@ -4,19 +4,19 @@ const places = require('../models/places.js')
 router.post('/', (req, res) => {
     console.log(req.body)
     if (!req.body.pic) {
-      req.body.pic = 'http://placekitten.com/400/400'
+        req.body.pic = 'http://placekitten.com/400/400'
     }
     if (!req.body.city) {
-      req.body.city = 'Anytown'
+        req.body.city = 'Anytown'
     }
     if (!req.body.state) {
-      req.body.state = 'USA'
+        req.body.state = 'USA'
     }
     places.push(req.body)
     res.redirect('/places')
-  })
+})
 
-  router.get('/new', (req, res) => {
+router.get('/new', (req, res) => {
     res.render('places/new')
 })
 
@@ -34,12 +34,16 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    res.render(show)
-})
-
-
-router.get('/:id', (req, res) => {
-    res.render(show)
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.render('error404')
+    }
+    else if (!places[id]) {
+        res.render('error404')
+    }
+    else {
+        res.render('places/show', { place: places[id] })
+    }
 })
 
 router.get('/', (req, res) => {
@@ -56,12 +60,12 @@ router.put('/id', (req, res) => {
     }
     else {
         if (!req.body.pic) {
-            req.body.pic ="http://placekitten.com/400/400"
+            req.body.pic = "http://placekitten.com/400/400"
         }
         if (!req.body.city) {
             req.body.city = 'Anytown'
         }
-        if(!req.body.state) {
+        if (!req.body.state) {
             req.body.state = 'USA'
         }
         places[id] = req.body
