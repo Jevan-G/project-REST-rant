@@ -37,6 +37,11 @@ router.get('/:id', (req, res) => {
     res.render(show)
 })
 
+
+router.get('/:id', (req, res) => {
+    res.render(show)
+})
+
 router.get('/', (req, res) => {
     res.render('places/index', { places });
 });
