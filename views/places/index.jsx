@@ -4,7 +4,7 @@ const Def = require('../default');
 function index ({data}) {
     let placesFormatted = data.map((place) => {
       return (
-        <div className='col-sm-6'>
+        <div className='col-sm-3'>
           <h2>{place.name}</h2>
           <p className='text-center'>
             {place.cuisines}

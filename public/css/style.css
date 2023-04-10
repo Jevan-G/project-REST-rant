@@ -1,5 +1,15 @@
 h1 {
     text-align: center;
     color: cornflowerblue;
-  }
-  
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
