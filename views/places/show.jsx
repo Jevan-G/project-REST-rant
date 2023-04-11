@@ -1,43 +1,32 @@
 const React = require('react')
-const Def = require('../default')
+const Default = require('../default')
 
-function show(data) {
+function Show(data) {
     return (
-        <Def>
+        <Default>
             <main>
-                <h1>
-                    {data.place.name}
-                </h1>
-                <br />
-                <div>
-                    <h2 className='text-center'>
-                        Rating
-                    </h2>
-                    <p>Not yet rated.</p>
-                    <br />
-                    <h2 className='text-center'>
-                        Description
-                    </h2>
-                    <p>No description</p>
-                    <p>Located in {data.place.city}, {data.place.state} and serving {data.place.cuisines}</p>
-                    <br />
-                    <h2 className='text-center'>
-                        Comments
-                    </h2>
-                    <p>No comments yet.</p>
+                <h1>{data.place.name}</h1>
+                <div className="row">
+                    <div className="col-sm-6">
+                        <img src={data.place.pic} alt={data.place.name} className="img-max" />                    
+                    </div>
 
-                    <a href={`/places/${data.id}/edit`} className="btn btn-warning">
-                        Edit
-                    </a>
-                    <form method="POST" action={`/places/${data.id}?_method=DELETE`}>
-                        <button type="submit" className="btn btn-danger">
-                            Delete
-                        </button>
-                    </form>
+                    <div className="col-sm-3">
+                        <h3>Ratings</h3>
+                        <h3>Description</h3>
+                        <h4>Comments</h4>
+                    </div>
                 </div>
+
+                <a href={`/places/${data.place.id}/edit`} className="btn btn-warning">Edit</a>  
+                <form method="POST" action={`/places/${data.place.id}?_method=DELETE`}> 
+                    <button type="submit" className="btn btn-danger">
+                        Delete
+                    </button>
+                </form>
             </main>
-        </Def>
+        </Default>
     )
 }
 
-module.exports = show
+module.exports = Show
