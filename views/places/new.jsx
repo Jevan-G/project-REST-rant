@@ -1,14 +1,25 @@
 const React = require('react')
 const Default = require('../default')
 
-function new_form() {
+function new_form(data) {
+    let message = ""
+    if (data.message) {
+        message = (
+            <h4 className="alert-danger">
+                {data.message}
+            </h4>
+        )
+    }
+
+
     return (
         <Default>
             <main>
                 <h1>Add a New Place</h1>
+                {message}
                 <br/>
-                <form method='POST' action='/places'>
-                    <div className='row'>
+                <form method="POST" action="/places">
+                    <div className="row">
                         <div className="form-group col-sm-6">
                             <label htmlFor="name">Name</label>
                             <input
@@ -18,6 +29,7 @@ function new_form() {
                                 type="text"
                                 required />
                         </div>
+
                         <div className="form-group col-sm-6">
                             <label htmlFor="pic">Picture</label>
                             <input
@@ -26,6 +38,7 @@ function new_form() {
                                 name="pic" 
                                 type="text" />
                         </div>
+
                         <div className="form-group col-sm-6">
                             <label htmlFor="city">City</label>
                             <input
@@ -34,6 +47,7 @@ function new_form() {
                                 name="city" 
                                 type="text" />
                         </div>
+
                         <div className="form-group col-sm-6">
                             <label htmlFor="state">State</label>
                             <input
@@ -42,6 +56,7 @@ function new_form() {
                                 name="state" 
                                 type="text" />
                         </div>
+
                         <div className="form-group col-sm-6">
                             <label htmlFor="cuisines">Cuisines</label>
                             <input
@@ -51,14 +66,17 @@ function new_form() {
                                 type="text" 
                                 required />
                         </div>
+
                         <div className="form-group col-sm-6">
                             <label htmlFor="founded">Year Founded</label>
                             <input 
                                 className="form-control" 
                                 id="founded" 
                                 name="founded"
-                                type="text" />
+                                type="number"
+                                value={new Date().getFullYear()} />
                         </div>
+
                         <br/>
                     </div>
                     <input className="btn btn-primary" type="submit" value="Add Place" />
