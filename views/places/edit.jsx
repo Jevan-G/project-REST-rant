@@ -1,7 +1,7 @@
 const React = require('react')
 const Def = require('../default.jsx')
 
-function edit_form (data) {
+function edit_form(data) {
     return (
         <Def>
             <main>
@@ -9,14 +9,14 @@ function edit_form (data) {
                 <br />
                 <form method="POST" action={`/places/${data.place.id}?_method=PUT`}>
                     <div className='row'>
-                    <div className="form-group col-sm-6">
-                        <label htmlFor="name">Place Name</label>
-                        <input className="form-control" id="name" name="name" type="text" value={data.place.name} required />
-                    </div>
-                    <div className="form-group col-sm-6">
-                        <label htmlFor="pic">Place Picture</label>
-                        <input className="form-control" id="pic" name="pic" type="text" value={data.place.pic}/>
-                    </div>
+                        <div className="form-group col-sm-6">
+                            <label htmlFor="name">Place Name</label>
+                            <input className="form-control" id="name" name="name" type="text" value={data.place.name} required />
+                        </div>
+                        <div className="form-group col-sm-6">
+                            <label htmlFor="pic">Place Picture</label>
+                            <input className="form-control" id="pic" name="pic" type="text" value={data.place.pic} />
+                        </div>
                     </div>
                     <div className="form-grou col-sm-6">
                         <label htmlFor="city">City</label>
@@ -31,14 +31,21 @@ function edit_form (data) {
                         <input className="form-control" id="cuisines" name="cuisines" type="text" value={data.place.cuisines} required />
                     </div>
                     <div className="form-group col-sm-6">
-                            <label htmlFor="founded">Year Founded</label>
-                            <input className="form-control" id="founded" name="founded" type="number" value={data.place.founded} />
-                        </div>
-                    <input className="btn btn-primary" type="submit" value="Edit" />
-                </form>
-            </main>
+                        <label htmlFor="founded">Founded</label>
+                        <input className="form-control"
+                            id="founded"
+                            name="founded"
+                            value={data.place.founded}
+                        />
+                    </div>
+                <input className="btn btn-primary" type="submit" value="Update Place" />
+            </form>
+        </main>
         </Def >
     )
 }
 
 module.exports = edit_form
+
+
+
